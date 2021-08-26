@@ -1,0 +1,39 @@
+## Set job parameters
+
+## Job Name
+#PBS -N Python3
+
+## Project Funding Code E,g. eee_userid
+#PBS -P eos_shjwei
+
+## Queue  Name
+#PBS -q gpu8 
+
+## By default error and output files are in format  <job_name>.e<JOB_ID> and <job_name>.o<JOB_ID>.
+## If you don't want in this format, you can change it as follows
+#PBS -o test_output1.out
+#PBS -e test_error1.err
+
+## Specify walltime in HH:MM:SS
+#PBS -l walltime=120:00:00
+
+## Select 1 hosts (nodes) with 32 cores per Host and launch 32 MPI tasks per host
+#PBS -l select=1:ncpus=4:ngpus=1 
+
+## Load the Application
+# module load python/3/intel/2020
+
+## pre-processing script
+cd $PBS_O_WORKDIR
+
+## Capture Number of Cores
+nprocs=`cat $PBS_NODEFILE|wc -l`
+
+## input file
+inputfile="python_test.py"
+
+## Run mpi program
+~/.bashrc
+#source activate eqt 
+source activate obspy
+python $inputfile >& $PBS_JOBID.log 2>&1
