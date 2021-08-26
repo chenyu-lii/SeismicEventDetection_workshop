@@ -33,7 +33,7 @@ nprocs=`cat $PBS_NODEFILE|wc -l`
 inputfile="python_test.py"
 
 ## Run mpi program
-~/.bashrc
-#source activate eqt 
-source activate obspy
+#~/.bashrc
+source activate eqt 
+#source activate obspy
 python $inputfile >& $PBS_JOBID.log 2>&1
