@@ -11,3 +11,9 @@ conda deactivate
 conda create -n eqt python=3.7
 Conda activate eqt
 conda install -c smousavi05 eqtransformer
+
+# submit job to cpu node q32
+qsub run_python_test.pbs
+
+# submit job to gpu node gpu8
+qsub run_python_gpu.pbs
